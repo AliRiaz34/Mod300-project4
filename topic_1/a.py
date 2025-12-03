@@ -283,3 +283,12 @@ def overlay_clusters_on_image(img_array, label_image, alpha=0.4, point_size=0.1)
     plt.show()
 
     return fig, ax
+
+# convert an array of values into a dataset matrix
+# copied from machinelearningmastery
+def create_dataset(dataset, look_back=1):
+	dataX, dataY = [], []
+	for i in range(len(dataset)-look_back-1):
+		dataX.append(dataset[i:(i + look_back), 0])
+		dataY.append(dataset[i + look_back, 0])
+	return np.array(dataX), np.array(dataY)
